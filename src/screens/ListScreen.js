@@ -1,8 +1,26 @@
 import React from "react";
-import { Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, FlatList } from "react-native";
 
 const ListScreen = () => {
-  return <Text style={styles.text}>List Screen component!</Text>;
+  const friends = [
+    { name: "Friend 1" },
+    { name: "Friend 2" },
+    { name: "Friend 3" },
+    { name: "Friend 4" },
+    { name: "Friend 5" },
+    { name: "Friend 6" },
+  ];
+
+  return (
+    <FlatList
+      keyExtractor={(friend) => friend.name}
+      data={friends}
+      renderItem={(element) => {
+        // element === { item: { name: "Friend 1" }, index: 0 }
+        return <Text>{element.item.name}</Text>;
+      }}
+    />
+  );
 };
 
 const styles = StyleSheet.create({
